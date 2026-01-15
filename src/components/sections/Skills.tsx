@@ -1,135 +1,122 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React from "react";
 import BlurText from "@/components/BlurText.tsx";
+import TiltedCard from "@/components/TiltedCard.tsx";
 
 const skills = [
   {
     id: "01",
-    category: "CORE ARCHITECTURE",
+    category: "CORE\nARCHITECTURE",
     description: "Building scalable front-end foundations.",
-    tech: ["JavaScript (ES6+)", "TypeScript", "React", "Next.js"],
+    tech: ["JavaScript (ES6+)", "TypeScript", "React", "Next.js", "Vite", "Node.js"],
     status: "MASTERY",
   },
   {
     id: "02",
-    category: "CREATIVE ENGINEERING",
+    category: "CREATIVE\nENGINEERING",
     description: "Bridging the gap between design and code.",
-    tech: ["WebGL / Three.js", "Framer Motion", "GLSL Shaders", "Tailwind CSS"],
+    tech: ["WebGL / Three.js", "Framer Motion", "GLSL Shaders", "Tailwind CSS", "GSAP", "Canvas API"],
     status: "HIGH_FIDELITY",
   },
   {
     id: "03",
-    category: "SYSTEM INTELLIGENCE",
+    category: "SYSTEM\nINTELLIGENCE",
     description: "Expanding into AI and automation pipelines.",
-    tech: ["Python", "TensorFlow", "RAG Pipelines", "LLM Integration"],
+    tech: ["Python", "TensorFlow", "RAG Pipelines", "LLM Integration", "OpenAI API", "HuggingFace"],
     status: "LOADING",
   },
 ];
 
 const Skills: React.FC = () => {
-  const [activeSkill, setActiveSkill] = useState<number | null>(null);
-
   return (
-    <section className="relative w-full py-32 px-6 md:px-12 lg:px-24 bg-black">
-      <div className="flex flex-col">
-        <div className="flex items-end gap-6 mb-16">
-          {/* Instead of raw h2 text, use BlurText */}
-          <div className="font-display text-5xl sm:text-6xl md:text-8xl font-bold text-white/10 uppercase leading-[0.85]">
+    <section className="relative w-full py-32 px-6 md:px-12 lg:px-24 bg-black overflow-hidden">
+
+      {/* Background Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+
+      <div className="relative z-10 flex flex-col max-w-7xl mx-auto">
+
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-20">
+          <div className="font-display text-5xl sm:text-6xl md:text-8xl font-bold text-white uppercase leading-[0.85] tracking-tighter">
             <BlurText
-              text={"CAPA\nBILITY"}
+              text={"SYSTEM\nMODULES"}
               delay={110}
               animateBy="words"
-              direction="top"
+              direction="bottom"
               className="whitespace-pre-line"
             />
           </div>
 
-          <div className="mb-2 font-mono text-crimson text-[10px] sm:text-xs tracking-widest">
-            // TECH_STACK_INIT
+          <div className="max-w-xs font-mono text-xs text-zinc-500 leading-relaxed border-t border-zinc-800 pt-4 md:border-t-0 md:pt-0">
+             // INITIALIZING SUBSYSTEMS...
+            <br />
+             // LOADING SKILL MATRICES...
+            <br />
+             // READY.
           </div>
         </div>
 
-        <div className="relative">
-          <div className="absolute left-4 md:left-10 top-0 bottom-0 w-px bg-white/10" />
+        {/* Grid Container */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+          {skills.map((skill) => (
+            <TiltedCard
+              key={skill.id}
+              imageSrc="https://placehold.co/600x800/050505/050505.png"
+              altText={skill.category}
+              captionText={`// ${skill.id} - ${skill.status}`}
+              containerHeight="500px"
+              containerWidth="100%"
+              imageHeight="500px"
+              imageWidth="100%"
+              rotateAmplitude={12}
+              scaleOnHover={1.05}
+              showMobileWarning={false}
+              showTooltip={true}
+              displayOverlayContent={true}
+              overlayContent={
+                <div className="w-full h-full p-8 flex flex-col justify-between bg-black/40 backdrop-blur-sm border border-white/10 hover:border-crimson/50 transition-colors duration-500">
 
-          <div className="flex flex-col gap-12">
-            {skills.map((skill, index) => {
-              const isEven = index % 2 === 0;
-              const cardWidth = index === 1 ? "md:max-w-3xl" : "md:max-w-2xl";
-              const offsetClass = isEven ? "md:translate-x-16" : "md:-translate-x-8";
-              const nodeSize = index === 2 ? "w-5 h-5" : "w-4 h-4";
-              const dotSize = index === 2 ? "w-2.5 h-2.5" : "w-2 h-2";
-              return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
-                transition={{ duration: 0.6, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                onMouseEnter={() => setActiveSkill(index)}
-                onMouseLeave={() => setActiveSkill(null)}
-                className={`group relative pl-12 md:pl-20 ${offsetClass}`}
-              >
-                <div className="absolute left-2 md:left-8 top-3">
-                  <div className={`${nodeSize} rounded-full border border-white/30 bg-black group-hover:border-crimson transition-colors`} />
-                  <div className={`absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 ${dotSize} rounded-full bg-crimson scale-0 group-hover:scale-100 transition-transform`} />
-                </div>
+                  {/* Holographic Scanline Overlay */}
+                  <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_0%,rgba(255,255,255,0.03)_50%,transparent_100%)] bg-[length:100%_4px] pointer-events-none z-0" />
 
-                <div className={`relative border border-white/10 bg-surface/40 backdrop-blur-sm p-5 sm:p-6 md:p-8 overflow-hidden ${cardWidth}`}>
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute inset-0 bg-gradient-to-r from-crimson/10 via-transparent to-transparent" />
-                  </div>
-
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 relative z-10">
-                    <div className="flex items-baseline gap-3">
-                      <span className="font-mono text-[10px] sm:text-xs text-crimson opacity-70">/{skill.id}</span>
-                      <div className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight">
-                        <BlurText
-                          text={skill.category}
-                          delay={35}
-                          animateBy="words"
-                          direction="top"
-                          className="inline-block"
-                        />
-                      </div>
+                  <div className="relative z-10">
+                    <div className="flex justify-between items-start mb-8">
+                      <span className="font-mono text-sm text-crimson tracking-widest font-bold">
+                        {skill.id} // {skill.status}
+                      </span>
+                      <div className="w-3 h-3 rounded-full bg-zinc-800 border border-white/20" />
                     </div>
 
-                    <div className="md:max-w-md text-dim text-xs sm:text-sm font-mono opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <h3 className="font-display text-5xl font-bold text-zinc-400 mb-6 leading-[0.85] tracking-tighter uppercase whitespace-pre-line break-all group-hover:text-white transition-colors duration-300">
                       <BlurText
-                        text={`[${skill.description}]`}
-                        delay={12}
+                        text={skill.category}
+                        delay={110}
                         animateBy="words"
-                        direction="top"
-                        className="inline-block"
+                        direction="bottom"
+                        className="whitespace-pre-line"
                       />
+                    </h3>
+
+                    <div className="border-l-2 border-zinc-800 pl-4 py-1 mb-8">
+                      <p className="font-mono text-sm text-zinc-500">
+                        {skill.description}
+                      </p>
                     </div>
                   </div>
 
-                  <div className="mt-4 sm:mt-6 flex flex-wrap gap-x-5 gap-y-2">
-                    {skill.tech.map((item, i) => (
-                      <span
-                        key={i}
-                        className={`font-mono text-xs sm:text-sm transition-colors duration-300 ${
-                          activeSkill === index ? "text-white" : "text-white/40"
-                        }`}
-                      >
-                        {item}
+                  <div className="relative z-10 flex flex-wrap gap-2">
+                    {skill.tech.map((t, i) => (
+                      <span key={i} className="px-3 py-1.5 bg-zinc-900 border border-zinc-800 text-[11px] font-mono text-zinc-400 hover:text-white hover:border-zinc-600 transition-colors">
+                        {t}
                       </span>
                     ))}
                   </div>
-
-                  <motion.div
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: activeSkill === index ? 1 : 0 }}
-                    transition={{ duration: 0.5, ease: "circOut" }}
-                    className="absolute bottom-0 left-0 w-full h-[1px] bg-crimson origin-left"
-                  />
                 </div>
-              </motion.div>
-            );
-            })}
-          </div>
+              }
+            />
+          ))}
         </div>
+
       </div>
     </section>
   );

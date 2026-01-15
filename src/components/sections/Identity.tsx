@@ -1,57 +1,68 @@
-import React from 'react';
-import DecryptionText from '../ui/DecryptionText';
+import React from "react";
+import DecryptionText from '@/components/ui/DecryptionText';
+
 
 const Identity: React.FC = () => {
     return (
-        <section className="relative w-full py-24 px-6 md:px-12 lg:px-24 border-t border-white/10">
-            <div className="flex flex-col md:flex-row gap-12 md:gap-24">
+        <section className="relative w-full min-h-screen flex items-center bg-black py-24 px-6 md:px-12 lg:px-24 overflow-hidden">
 
-                {/* Left Column: Header */}
-                <div className="w-full md:w-1/3">
-                    <h2 className="font-display text-4xl md:text-5xl font-bold uppercase mb-4">
-                        <DecryptionText text="IDENTITY" />
+            <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+
+                {/* Left Side: Massive Typography */}
+                <div className="flex flex-col select-none leading-[0.8]">
+                    <h2 className="font-display font-bold text-white text-[clamp(5rem,18vw,12rem)] tracking-tighter">
+                        <DecryptionText text="IDEN" speed={100} className="text-white" />
                     </h2>
-                    <div className="font-mono text-dim text-xs tracking-widest uppercase">
-             // SYSTEM_PROFILE_V2.2
-                    </div>
+                    <h2 className="font-display font-bold text-white text-[clamp(5rem,18vw,12rem)] tracking-tighter">
+                        <DecryptionText text="TITY" speed={100} className="text-white" />
+                    </h2>
                 </div>
 
-                {/* Right Column: Content */}
-                <div className="w-full md:w-2/3 flex flex-col gap-8">
+                {/* Right Side: Content & Stats */}
+                <div className="flex flex-col gap-12">
 
-                    {/* Bio Card */}
-                    <div className="p-6 md:p-8 border border-white/10 bg-surface/50 backdrop-blur-sm relative overflow-hidden group">
-                        <div className="absolute top-0 left-0 w-1 h-full bg-crimson transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
+                    {/* Bio Box */}
+                    <div className="border border-white/10 bg-white/5 p-8 md:p-12 backdrop-blur-sm">
+                        <div className="font-mono text-crimson text-xs tracking-widest mb-6">
+                            [ BIO_SUMMARY ]
+                        </div>
 
-                        <div className="font-mono text-xs text-crimson mb-2">[ BIO_SUMMARY ]</div>
-                        <p className="font-urban font-semibold text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl">
+                        <h3 className="font-display text-2xl md:text-3xl font-bold text-white leading-tight mb-8">
                             I am a Design Technologist operating at the intersection of high-fidelity UI systems, motion, and Artificial Intelligence.
-                        </p>
-                        <div className="mt-8 font-mono text-xs text-dim max-w-lg leading-relaxed">
-                            CURRENTLY ENGINEERING SCALABLE FRONTEND ARCHITECTURES AND AI INTEGRATED TOOLS. FORMERLY OPTIMIZING BANKING DELIVERY SYSTEMS.
+                        </h3>
+
+                        <div className="font-mono text-xs md:text-sm text-zinc-500 leading-relaxed uppercase">
+                            Currently engineering scalable frontend architectures and AI integrated tools. Formerly optimizing banking delivery systems.
                             <br />
-                            [CITE: JS, PY, UI]
+                            <span className="opacity-50 mt-2 block">[CITE: JS, PY, UI]</span>
                         </div>
                     </div>
 
-                    {/* Stats / Info Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div className="border border-white/10 p-6 flex flex-col items-center justify-center gap-2 hover:bg-white/5 transition-colors">
-                            <div className="font-display text-2xl font-bold">04+</div>
-                            <div className="font-mono text-[10px] text-dim tracking-widest">EXP_YEARS</div>
+                    {/* Stats Grid */}
+                    <div className="grid grid-cols-3 gap-4">
+                        {/* Stat 1 */}
+                        <div className="border border-white/10 p-6 flex flex-col items-center justify-center text-center hover:bg-white/5 transition-colors">
+                            <div className="font-display text-2xl md:text-3xl font-bold text-white mb-2">04+</div>
+                            <div className="font-mono text-[10px] text-zinc-500 tracking-wider">EXP_YEARS</div>
                         </div>
-                        <div className="border border-white/10 p-6 flex flex-col items-center justify-center gap-2 hover:bg-white/5 transition-colors">
-                            <div className="font-display text-2xl font-bold">+35%</div>
-                            <div className="font-mono text-[10px] text-dim tracking-widest">AVG_SPEED_UP</div>
+
+                        {/* Stat 2 */}
+                        <div className="border border-white/10 p-6 flex flex-col items-center justify-center text-center hover:bg-white/5 transition-colors">
+                            <div className="font-display text-2xl md:text-3xl font-bold text-white mb-2">+35%</div>
+                            <div className="font-mono text-[10px] text-zinc-500 tracking-wider">AVG_SPEED_UP</div>
                         </div>
-                        <div className="border border-white/10 p-6 flex flex-col items-center justify-center gap-2 hover:bg-white/5 transition-colors">
-                            <div className="font-display text-2xl font-bold">BLR_IN</div>
-                            <div className="font-mono text-[10px] text-dim tracking-widest">LOC_ORIGIN</div>
+
+                        {/* Stat 3 */}
+                        <div className="border border-white/10 p-6 flex flex-col items-center justify-center text-center hover:bg-white/5 transition-colors">
+                            <div className="font-display text-2xl md:text-3xl font-bold text-white mb-2">BLR_IN</div>
+                            <div className="font-mono text-[10px] text-zinc-500 tracking-wider">LOC_ORIGIN</div>
                         </div>
                     </div>
 
                 </div>
+
             </div>
+
         </section>
     );
 };
